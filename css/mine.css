@@ -10,5 +10,5 @@ body::before {
     top: 0;
     position: fixed;
     background: #00838F;
-    background-image: url('../img/winter3.jpg');
+    background-image: url('../img/winter.jpg');
 }
