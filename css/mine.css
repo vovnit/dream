@@ -12,3 +12,26 @@ body::before {
     background: #00838F;
     background-image: url('../img/winter.jpg');
 }
+.mdl-grid.center-items {
+    justify-content: center;
+}
+
+.demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 70px;
+    background-color: #623a56;
+}
+.demo-card-wide > .mdl-card__menu {
+    color: #fff;
+}
+.demo-card-wide.mdl-card {
+    width: 100%;
+}
+.demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 70px;
+    background-color: #623a56;
+}
+.demo-card-wide > .mdl-card__menu {
+    color: #fff;
+}
