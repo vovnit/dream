@@ -1,0 +1,54 @@
+﻿@using Dream.Controllers
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<link rel="stylesheet" href="./material.min.css">
+    <script src="./material.min.js"></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.purple-indigo.min.css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="/Content/mine.css" />
+    <title>Dream</title>
+</head>
+<body>
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--transparent">
+            <div class="mdl-layout-icon"></div>
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                    <span class="mdl-layout-title">Dream</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-layout--large-screen-only">
+                <!-- Navigation -->
+                    <nav class="mdl-navigation">
+                        <a class="mdl-navigation__link" href="@Url.Action("Index", "Posts")">Лента</a>
+                        <a class="mdl-navigation__link" href="@Url.Action("Ratings", "Posts")">Лучшие статьи</a>
+                        @Html.Partial("_LoginPartial")
+                        </nav>
+</div>
+                <div class="mdl-layout--small-screen-only">
+                    <button id="menu-speed" class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">more_vert</i>
+                    </button>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="menu-speed">
+                        <li class="mdl-menu__item"><a class="mdl-menu__item" href="@Url.Action("Index", "Posts")">Лента</a></li>
+                        <li class="mdl-menu__item"><a class="mdl-menu__item" href="">Лучшие статьи</a></li>
+                        @Html.Partial("_MobileLoginPartial")
+                    </ul>
+                </div>
+
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="content-grid mdl-grid center-items">
+                @RenderBody()
+            </div>
+        </main>
+
+    </div>
+</body>
+</html>

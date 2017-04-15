@@ -1,0 +1,42 @@
+﻿@model Dream.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Регистрация";
+}
+<div class="mdl-cell mdl-cell--10-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+    @using (Html.BeginForm())
+    {
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp  mdl-cell--12-col">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">@ViewBag.Title</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+                @Html.AntiForgeryToken()
+                <h4>Создайте новую учетную запись.</h4>
+                <hr />
+                <b>Пароль должен состоять из 8 символов и в нем должны присутствовать буквы верхнего и нижнего регистра, цифры и символы.@ViewBag.Message</b>
+                @Html.LabelFor(m => m.Email)<br />
+
+                <div class="mdl-textfield mdl-js-textfield">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "mdl-textfield__input" })
+                    </div>
+
+                    <br />@Html.LabelFor(m => m.Password)<br />
+                <div class="mdl-textfield mdl-js-textfield">
+                    @Html.PasswordFor(m => m.Password, new { @class = "mdl-textfield__input" })
+                    </div>
+                    <br />@Html.LabelFor(m => m.ConfirmPassword)<br />
+                <div class="mdl-textfield mdl-js-textfield">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "mdl-textfield__input" })
+                    </div>
+            }
+                </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                Регистрация
+            </button>
+        </div>
+        </div>
+    }
+    </div>

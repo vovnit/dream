@@ -1,0 +1,60 @@
+﻿@model System.Collections.Generic.IEnumerable<Dream.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if (ViewContext.HttpContext.User.IsInRole("admin"))
+{
+    @Html.Partial("Create", new Dream.Models.Post())
+}
+@foreach (var item in Model)
+{
+    <div class="mdl-cell mdl-cell--10-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                @Html.DisplayFor(modelItem => item.Time)
+            </div>
+            <div class="mdl-card__supporting-text">
+                @Html.DisplayFor(modelItem => item.Text)
+            </div>
+            <div class="mdl-card__menu">
+                @using (Html.BeginForm())
+                {
+                    @Html.DisplayFor(modelItem => item.avrgRating)
+                    if (Request.IsAuthenticated)
+                    {
+                        <button type="submit" value="Like" formaction="@Url.Action("Like", "Posts")?postId=@item.Id" class="mdl-button mdl-js-button mdl-button--icon">
+                            <i class="material-icons md-light">thumb_up</i>
+                        </button>
+                    }
+                    else
+                    {
+                        <button value="Like" class="mdl-button mdl-js-button mdl-button--icon">
+                            <i class="material-icons md-light">thumb_up</i>
+                        </button>
+                    }
+                }
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                @if (ViewContext.HttpContext.User.IsInRole("admin"))
+                {
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="@Url.Action("Edit", "Posts", new { id = item.Id })">
+                        Редактировать
+                    </a>
+                }
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="@Url.Action("PostDetails", "Comments", new {id = item.Id}, null)">
+                    Комментарии
+                </a>
+                @if (ViewContext.HttpContext.User.IsInRole("admin"))
+                {
+                    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="@Url.Action("Delete", "Posts", new { id = item.Id })">
+                        Удалить
+                    </a>
+                }
+                @{/* Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                   @Html.ActionLink("Details", "PostDetails", "Comments", new {id = item.Id}, null) |
+                   @Html.ActionLink("Delete", "Delete", new {id = item.Id}) */}
+            </div>
+        </div>
+    </div>
+                    }

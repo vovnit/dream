@@ -1,0 +1,27 @@
+﻿@model Dream.Models.Comment
+<div class="mdl-cell mdl-cell--10-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            
+                <div class="mdl-card__title">
+                    <h5 class="mdl-card__title-text">Написать комментарий</h5>
+                </div>
+                <div class="mdl-card__supporting-text  mdl-cell--12-col">
+                    <div class="mdl-textfield mdl-js-textfield  mdl-cell--12-col">
+                        @Html.TextAreaFor(Model => Model.Text, new { @class = "mdl-textfield__input", @rows = "3", @id = "text" })
+                        <label class="mdl-textfield__label" for="text">Текст комментария</label>
+                    </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <button type="submit" value="Create" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                        Отправить
+                    </button>
+                </div>
+
+            
+        }
+    </div>
+    </div>
+

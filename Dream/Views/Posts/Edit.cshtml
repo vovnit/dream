@@ -1,0 +1,23 @@
+﻿@model Dream.Models.Post
+
+@{
+    ViewBag.Title = "Редактирование";
+}
+<div class="mdl-cell mdl-cell--10-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp  mdl-cell--12-col">
+        <div class="mdl-card__supporting-text">
+            @Html.TextAreaFor(model => Model.Text, new { @class = "mdl-textfield__input", @rows = "3", @id = "post" })
+            </div>
+
+        <div class="mdl-card__actions mdl-card--border">
+            <button type="submit" value="Save" formaction="Posts/Create" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                Отправить
+            </button>
+        </div>
+    </div>
+}
+</div>

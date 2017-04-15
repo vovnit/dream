@@ -1,0 +1,43 @@
+﻿@using Dream.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Выполнить вход";
+}
+<div class="mdl-cell mdl-cell--10-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">@ViewBag.Title.</h2>
+        </div>
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "mdl-card__supporting-text", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Используйте локальную учетную запись для входа.</h4><br /><br />
+                            @Html.LabelFor(m => m.Email)<br />
+                            <div class="mdl-textfield mdl-js-textfield">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "mdl-textfield__input" })<br />
+                                </div>
+                                <br />@Html.LabelFor(m => m.Password)<br />
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "mdl-textfield__input" })
+                                    </div>
+                                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox">
+                                        @Html.CheckBoxFor(m => m.RememberMe, new { @class = "mdl-checkbox__input", @id = "checkbox" })
+                                        @Html.LabelFor(m => m.RememberMe, new { @class = "mdl-checkbox__label" })
+                                    </label><br />
+                                    <div class="mdl-card__actions mdl-card--border">
+                                        <button type="submit" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                                            Выполнить вход
+                                        </button>
+                                        <button formaction="@Url.Action("Register", "Account")" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                                            Регистрация нового пользователя
+                                        </button>
+                                    </div>
+                                    @* Включите, когда будет включено подтверждение учетной записи для функции сброса пароля
+                                        <p>
+                                            @Html.ActionLink("Забыли пароль?", "ForgotPassword")
+                                        </p>*@
+                                    }
+</section>
+    </div>
+</div>

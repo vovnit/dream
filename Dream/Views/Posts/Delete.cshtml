@@ -1,0 +1,29 @@
+﻿@model Dream.Models.Post
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="mdl-cell mdl-cell--5-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+    <h5 class="mdl-card__title-text">Вы уверены, что хотите удалить это?</h5>
+        </div>
+    <div class="mdl-card__supporting-text">
+        @Html.DisplayFor(model => model.Time)]<hr />
+        @Html.DisplayFor(model => model.Text)
+        <div class="mdl-card__menu">
+            @Html.DisplayFor(model=> model.avrgRating)
+            <button class="mdl-button mdl-js-button mdl-button--icon">
+                <i class="material-icons md-light">thumb_up</i>
+            </button>
+            </div>
+        <div class="mdl-card__actions mdl-card--border">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                    <button type="submit" value="Delete" class="mdl-button mdl-js-button mdl-js-ripple-effect" >Удалить</button>
+            }
+            </div>
+        </div>
+    </div>
+</div>

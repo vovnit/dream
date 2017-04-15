@@ -1,0 +1,39 @@
+﻿@model Dream.Models.PostView
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="mdl-cell mdl-cell--10-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__supporting-text">
+            @Model.post.Text<br />
+            </div>
+        </div>
+    </div>
+    @if (Model.Comments.Count!=0)
+    {
+    <div class="mdl-cell mdl-cell--10-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            @foreach (var b in Model.Comments)
+            {
+                <div class="mdl-card__supporting-text mdl-card--border">
+                    <div class="mdl-cell--12-col">
+                  
+                                @b.Time
+                        </div>
+                    <div class="mdl-layout-spacer"></div>
+                    <div  class="mdl-cell--12-col">
+                               <b>@b.AuthorId</b>
+
+                    </div>
+                    @b.Text<br />
+                </div>
+            }
+            </div>
+        </div>
+    }
+
+@if (Request.IsAuthenticated)
+{
+@Html.Partial("CreateComment", new Dream.Models.Comment())
+}
